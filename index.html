@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mouri — Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Press+Start+2P&display=swap');
+        
+        :root {
+            --ink: #1a1a1a;
+        }
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            background: #f8f4e9;
+            color: var(--ink);
+            font-family: 'Architects Daughter', cursive;
+            min-height: 100vh;
+            padding: 5vh 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+       
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+        }
+       
+        .portfolio {
+            width: 100%;
+            display: flex;
+            gap: clamp(40px, 6vw, 80px);
+            align-items: flex-start;
+        }
+       
+        .profile-pic {
+            width: clamp(240px, 28vw, 300px);
+            height: clamp(360px, 42vw, 450px);
+            border: clamp(8px, 1.2vw, 14px) solid var(--ink);
+            border-radius: 8px 8px 60px 8px;
+            overflow: hidden;
+            box-shadow: clamp(12px, 2vw, 18px) clamp(12px, 2vw, 18px) 0 #1a1a1a;
+            flex-shrink: 0;
+            background: #fff;
+            position: relative;
+        }
+       
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+       
+        .profile-pic::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, rgba(255,255,255,0.75));
+        }
+       
+        .info {
+            flex: 1;
+            padding-top: clamp(20px, 4vh, 50px);
+        }
+       
+        .name {
+            font-size: clamp(2.6rem, 7vw, 4.8rem);
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+       
+        .name::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: clamp(280px, 45vw, 420px);
+            height: clamp(6px, 0.8vw, 9px);
+            background: var(--ink);
+            border-radius: 4px;
+        }
+       
+        .wavy-line {
+            width: 100%;
+            max-width: 520px;
+            height: 28px;
+            margin: clamp(25px, 4vh, 45px) 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%27 height=%2725%27 viewBox=%270 0 100 25%27><path d=%27M0 12 Q25 2 50 18 Q75 5 100 15%27 fill=%27none%27 stroke=%27%231a1a1a%27 stroke-width=%272.5%27/></svg>') repeat-x;
+            background-size: 120px 28px;
+        }
+       
+        .title {
+            font-size: clamp(1.9rem, 5.5vw, 3.3rem);
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+        }
+
+        .capes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+            gap: 18px;
+            max-width: 520px;
+            margin-top: 20px;
+        }
+
+        .cape-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cape-icon {
+            width: clamp(65px, 9vw, 85px);
+            height: clamp(65px, 9vw, 85px);
+            border: clamp(5px, 0.8vw, 7px) solid var(--ink);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 5px 5px 0 #1a1a1a;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+       
+        .cape-icon:hover {
+            transform: scale(1.08);
+            box-shadow: 8px 8px 0 #1a1a1a;
+        }
+       
+        .cape-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cape-label {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .content {
+            max-width: 720px;
+            width: 100%;
+            margin: 90px auto 0;
+            font-size: clamp(1.1rem, 3.2vw, 1.45rem);
+        }
+       
+        .section {
+            margin-bottom: clamp(60px, 8vh, 90px);
+        }
+       
+        h2 {
+            font-size: clamp(2.1rem, 6vw, 2.9rem);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+       
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--ink);
+        }
+
+        /* ==================== RESPONSIVE BREAKPOINTS ==================== */
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 18px;
+            }
+            
+            .portfolio {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .info {
+                padding-top: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .wavy-line {
+                margin: 25px auto 35px;
+            }
+            
+            .capes-grid {
+                gap: 14px;
+            }
+            
+            .content {
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .capes-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="portfolio">
+            <!-- Left: Profile Picture -->
+            <div class="profile-pic">
+                <img src="assets/me.png" alt="Mouri" onerror="this.src='https://via.placeholder.com/280x420/eee/333?text=MOURI'">
+            </div>
+           
+            <!-- Right: Info -->
+            <div class="info">
+                <div class="name">Mouri</div>
+               
+                <div class="wavy-line"></div>
+               
+                <div class="title">Capes I Owned</div>
+               
+                <!-- 9 Capes Grid -->
+                <div class="capes-grid">
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/builder.png" alt="Cape 1" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Builder</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/menace.png" alt="Cape 2" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Menace</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/common.png" alt="Cape 3" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Common</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/purpleheart.png" alt="Cape 4" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Purple heart</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/pan.png" alt="Cape 5" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Pan</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/copper.png" alt="Cape 6" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Copper</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/zombiehorse.png" alt="Cape 7" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Z-Horse</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/mce.png" alt="Cape 8" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Mce</div>
+                    </div>
+                    <div class="cape-item">
+                        <div class="cape-icon">
+                            <img src="assets/home.png" alt="Cape 9" onerror="this.src='https://via.placeholder.com/80x80/1a1a1a/fff?text=CAPE'">
+                        </div>
+                        <div class="cape-label">Home</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>About</h2>
+                <p>I'm a minecraft cape collector that will do anything for a cape i haven't own yet meow :D</p>
+            </div>
+           
+            <div class="section">
+                <h2>Work</h2>
+                <p>→ Project 1<br>
+                   → Project 2<br>
+                   → Project 3</p>
+            </div>
+           
+            <div class="section">
+                <h2>Contact</h2>
+                <p>mourimcbusiness@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Make all cape icons interactive
+        document.querySelectorAll('.cape-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.style.borderColor = this.style.borderColor === 'rgb(74, 222, 128)' ? '#1a1a1a' : '#4ade80';
+            });
+        });
+    </script>
+</body>
+</html>
