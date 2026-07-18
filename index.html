@@ -3,41 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Page</title>
-
-    <!-- Tab icon -->
-    <link rel="icon" type="image/gif" href="cat.gif">
-
+    <title>Mouristic • Giveaway Bot</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #5865F2;
+            --dark: #36393F;
+            --darker: #2F3136;
+            --light: #DCDEE3;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            width: 100vw;
-            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2F3136 0%, #202225 100%);
+            color: #DCDEE3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: rgba(32, 34, 37, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 5%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: white;
+            justify-content: space-between;
+            border-bottom: 1px solid #202225;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo-dot {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #DCDEE3;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(88, 101, 242, 0.2);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero .highlight {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: #4752C4;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #DCDEE3;
+            border: 2px solid #5865F2;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(88, 101, 242, 0.1);
+        }
+        
+        section {
+            padding: 100px 5%;
+        }
+        
+        .features {
+            background: #292B2F;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: #36393F;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .commands {
+            background: #2F3136;
+        }
+        
+        .command-list {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #36393F;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .command-item {
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid #42444A;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .command-item:last-child {
+            border-bottom: none;
+        }
+        
+        .command-name {
+            font-family: monospace;
+            color: #00FF9F;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: #202225;
+            padding: 60px 5% 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .discord-btn {
+            background: #5865F2;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>Mouristic</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#commands">Commands</a></li>
+        </ul>
+        <a href="#" class="btn btn-primary" onclick="inviteBot()">Invite Bot</a>
+    </nav>
 
-    <img src="cat.gif" alt="Cat GIF">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✨ Discord Giveaway Bot</div>
+            <h1>Host <span class="highlight">epic giveaways</span><br>with ease</h1>
+            <p>The clean, fast, and reliable giveaway bot for your Discord server</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary" onclick="inviteBot()">
+                    <span>Invite Mouristic Now</span>
+                </a>
+                <a href="#features" class="btn btn-secondary">See Features</a>
+            </div>
+            
+            <p style="margin-top: 3rem; font-size: 1rem; opacity: 0.7;">
+                Trusted by 1,200+ servers • Zero downtime • Free forever
+            </p>
+        </div>
+    </section>
 
-    <script>
-        console.log("smart boy ?v=ibqH-W1-9og");
-    </script>
+    <!-- Features -->
+    <section class="features" id="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>Easy Giveaways</h3>
+                <p>Create giveaways in seconds with simple commands. Supports multiple winners and custom durations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Auto End &amp; Reroll</h3>
+                <p>Giveaways automatically end and pick winners. didn't claim? Just use <code>/reroll</code>.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💵</div>
+                <h3>Free</h3>
+                <p>There is no fee, taxes, subscription and ads in the bot at all!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Built with modern Discord API for instant responses and reliable performance.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Commands -->
+    <section class="commands" id="commands">
+        <h2 class="section-title">Main Commands</h2>
+        <div class="command-list">
+            <div class="command-item">
+                <span><strong>/giveaway</strong></span>
+                <span style="color: #72767D;">Start a new giveaway</span>
+            </div>
+            <div class="command-item">
+                <span><strong>/endgiveaway</strong></span>
+                <span style="color: #72767D;">End a giveaway early</span>
+            </div>
+            <div class="command-item">
+                <span><strong>/reroll</strong></span>
+                <span style="color: #72767D;">Pick new winners</span>
+            </div>
+            <div class="command-item">
+                <span><strong>/roleaccess</strong></span>
+                <span style="color: #72767D;">Setup who can access the bot with roles!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                Mouristic
+            </div>
+            <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.6;">
+                © 2026 Mouristic • Not affiliated with Discord Inc.
+            </p>
+        </div>
+    </footer>
+
+<script>
+    // Replace this with your actual bot invite link
+    const inviteLink = "https://discord.com/oauth2/authorize?client_id=1527981571074953227&permissions=8&integration_type=0&scope=bot";
+
+    function inviteBot() {
+        window.open(inviteLink, "_blank");
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href') !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+    
+    console.log("%cMouristic Giveaway Bot - Website ready! 🎉", "color: #5865F2; font-size: 14px; font-weight: bold");
+</script>
 </body>
 </html>
