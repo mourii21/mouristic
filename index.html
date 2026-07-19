@@ -6,27 +6,27 @@
     <title>Mouristic • Giveaway Bot</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
+      
         :root {
             --primary: #5865F2;
             --dark: #36393F;
             --darker: #2F3136;
             --light: #DCDEE3;
         }
-        
+      
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+      
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #2F3136 0%, #202225 100%);
             color: #DCDEE3;
             line-height: 1.6;
         }
-        
+      
         .navbar {
             background: rgba(32, 34, 37, 0.95);
             backdrop-filter: blur(10px);
@@ -40,7 +40,7 @@
             justify-content: space-between;
             border-bottom: 1px solid #202225;
         }
-        
+      
         .logo {
             display: flex;
             align-items: center;
@@ -49,28 +49,28 @@
             font-weight: 700;
             color: white;
         }
-        
+      
         .logo-dot {
             color: var(--primary);
         }
-        
+      
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
-        
+      
         .nav-links a {
             color: #DCDEE3;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+      
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+      
         .hero {
             min-height: 100vh;
             display: flex;
@@ -80,7 +80,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+      
         .hero::before {
             content: '';
             position: absolute;
@@ -91,13 +91,13 @@
             background: radial-gradient(circle at center, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
             z-index: 0;
         }
-        
+      
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             z-index: 1;
         }
-        
+      
         .hero-badge {
             display: inline-block;
             background: rgba(88, 101, 242, 0.2);
@@ -108,30 +108,30 @@
             margin-bottom: 1rem;
             font-weight: 500;
         }
-        
+      
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             line-height: 1.1;
         }
-        
+      
         .hero .highlight {
             color: var(--primary);
         }
-        
+      
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
         }
-        
+      
         .cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+      
         .btn {
             padding: 14px 32px;
             border-radius: 8px;
@@ -143,68 +143,68 @@
             gap: 8px;
             transition: all 0.3s;
         }
-        
+      
         .btn-primary {
             background: var(--primary);
             color: white;
             border: none;
         }
-        
+      
         .btn-primary:hover {
             background: #4752C4;
             transform: translateY(-3px);
         }
-        
+      
         .btn-secondary {
             background: transparent;
             color: #DCDEE3;
             border: 2px solid #5865F2;
         }
-        
+      
         .btn-secondary:hover {
             background: rgba(88, 101, 242, 0.1);
         }
-        
+      
         section {
             padding: 100px 5%;
         }
-        
+      
         .features {
             background: #292B2F;
         }
-        
+      
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
         }
-        
+      
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+      
         .feature-card {
             background: #36393F;
             padding: 2rem;
             border-radius: 12px;
             transition: transform 0.3s;
         }
-        
+      
         .feature-card:hover {
             transform: translateY(-10px);
         }
-        
+      
         .feature-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        
+      
         .commands {
             background: #2F3136;
         }
-        
+      
         .command-list {
             max-width: 700px;
             margin: 0 auto;
@@ -212,7 +212,7 @@
             border-radius: 12px;
             overflow: hidden;
         }
-        
+      
         .command-item {
             padding: 1.2rem 2rem;
             border-bottom: 1px solid #42444A;
@@ -220,37 +220,26 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+      
         .command-item:last-child {
             border-bottom: none;
         }
-        
+      
         .command-name {
             font-family: monospace;
             color: #00FF9F;
             font-weight: 600;
         }
-        
+      
         footer {
             background: #202225;
             padding: 60px 5% 30px;
             text-align: center;
         }
-        
+      
         .footer-content {
             max-width: 800px;
             margin: 0 auto;
-        }
-        
-        .discord-btn {
-            background: #5865F2;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
         }
     </style>
 </head>
@@ -258,7 +247,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <span>Mouristic</span>
+            <span>Mouristic</span><span class="logo-dot">.</span>
         </div>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
@@ -273,14 +262,14 @@
             <div class="hero-badge">✨ Discord Giveaway Bot</div>
             <h1>Host <span class="highlight">epic giveaways</span><br>with ease</h1>
             <p>The clean, fast, and reliable giveaway bot for your Discord server</p>
-            
+          
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary" onclick="inviteBot()">
                     <span>Invite Mouristic Now</span>
                 </a>
                 <a href="#features" class="btn btn-secondary">See Features</a>
             </div>
-            
+          
             <p style="margin-top: 3rem; font-size: 1rem; opacity: 0.7;">
                 Trusted by 1,200+ servers • Zero downtime • Free forever
             </p>
@@ -299,7 +288,7 @@
             <div class="feature-card">
                 <div class="feature-icon">⏱️</div>
                 <h3>Auto End &amp; Reroll</h3>
-                <p>Giveaways automatically end and pick winners. didn't claim? Just use <code>/reroll</code>.</p>
+                <p>Giveaways automatically end and pick winners. Didn't claim? Just use <code>/reroll</code>.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💵</div>
@@ -341,38 +330,40 @@
     <footer>
         <div class="footer-content">
             <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
-                Mouristic
+                Mouristic<span class="logo-dot">.</span>
             </div>
+           
+            <div style="margin: 20px 0;">
+                <a href="tos.html" style="color:#B9BBBE; margin:0 15px; text-decoration:none;">Terms of Service</a>
+                <a href="privacy.html" style="color:#B9BBBE; margin:0 15px; text-decoration:none;">Privacy Policy</a>
+            </div>
+           
             <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.6;">
                 © 2026 Mouristic • Not affiliated with Discord Inc.
             </p>
         </div>
     </footer>
 
-<script>
-    // Replace this with your actual bot invite link
-    const inviteLink = "https://discord.com/oauth2/authorize?client_id=1527981571074953227&permissions=8&integration_type=0&scope=bot";
+    <script>
+        // Your bot invite link
+        const inviteLink = "https://discord.com/oauth2/authorize?client_id=1527981571074953227&permissions=8&integration_type=0&scope=bot";
 
-    function inviteBot() {
-        window.open(inviteLink, "_blank");
-    }
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href') !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        function inviteBot() {
+            window.open(inviteLink, "_blank");
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
-            }
+            });
         });
-    });
-    
-    console.log("%cMouristic Giveaway Bot - Website ready! 🎉", "color: #5865F2; font-size: 14px; font-weight: bold");
-</script>
+    </script>
 </body>
 </html>
