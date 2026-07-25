@@ -3,40 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Mouristic</title>
+    <title>Terms of Service • Welcome Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root {
+            --bg: #0b0e14;
+            --card: #12161f;
+            --border: #1e2430;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #00ffaa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: #2F3136;
-            color: #DCDEE3;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
             line-height: 1.7;
         }
-        h1, h2 { color: #5865F2; }
-        a { color: #00B0F4; }
+
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(0, 255, 170, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        header {
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #fff;
+            padding: 4px;
+        }
+
+        .back {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back:hover { color: var(--accent); }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 40px 0 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .updated {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 32px 0 12px;
+            color: var(--accent);
+        }
+
+        p, li {
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        li { margin-bottom: 6px; }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Terms of Service</h1>
-    <p><strong>Last Updated:</strong> July 19, 2026</p>
-    
-    <h2>1. Acceptance of Terms</h2>
-    <p>By inviting and using Mouristic on your Discord server, you agree to these Terms of Service.</p>
-    
-    <h2>2. Usage Rules</h2>
-    <p>You agree not to use the bot for any illegal, harmful, or abusive activities including spam, harassment, or scams.</p>
-    
-    <h2>3. No Warranty</h2>
-    <p>The bot is provided "as is" without any warranty. We are not liable for any damages or losses resulting from the use of the bot.</p>
-    
-    <h2>4. Termination</h2>
-    <p>We reserve the right to remove the bot from any server or terminate access without notice.</p>
-    
-    <p style="margin-top: 50px; text-align: center;">
-        <a href="index.html">← Back to Home</a>
-    </p>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                Welcome Bot
+            </a>
+            <a href="index.html" class="back">← Back</a>
+        </header>
+
+        <h1>Terms of Service</h1>
+        <p class="updated">Last updated: July 25, 2026</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By inviting or using the Welcome Bot (“the Bot”), you agree to these Terms of Service. If you do not agree, do not use the Bot.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Welcome Bot is a free Discord bot that sends automated welcome messages when a new member joins a server. The Bot is provided “as is” without warranties of any kind.</p>
+
+        <h2>3. Eligibility & Permissions</h2>
+        <p>You must have the necessary permissions (server owner or administrator) to invite the Bot and configure it. You are responsible for ensuring the Bot has the required permissions in your server.</p>
+
+        <h2>4. Acceptable Use</h2>
+        <ul>
+            <li>Do not use the Bot for illegal, harmful, or abusive purposes.</li>
+            <li>Do not attempt to exploit, overload, or reverse-engineer the Bot.</li>
+            <li>Do not use the Bot to spam or harass users.</li>
+        </ul>
+
+        <h2>5. Data & Storage</h2>
+        <p>The Bot stores only the channel ID chosen for welcome messages, in temporary memory. This data is lost when the Bot restarts. No personal messages or user content is permanently stored.</p>
+
+        <h2>6. Availability</h2>
+        <p>The Bot may be offline, updated, or discontinued at any time without notice. We are not responsible for any downtime or data loss.</p>
+
+        <h2>7. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, the Bot and its operators are not liable for any damages arising from the use or inability to use the Bot.</p>
+
+        <h2>8. Changes to These Terms</h2>
+        <p>We may update these Terms at any time. Continued use of the Bot after changes constitutes acceptance of the new Terms.</p>
+
+        <h2>9. Contact</h2>
+        <p>For questions about these Terms, contact the operator via Discord (mouristic).</p>
+
+        <footer>
+            <p><a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+            <p style="margin-top:12px">Powered by mouristic</p>
+        </footer>
+    </div>
 </body>
 </html>
