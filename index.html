@@ -3,367 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mouristic • Giveaway Bot</title>
+    <title>Welcome Bot • Powered by mouristic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-      
         :root {
-            --primary: #5865F2;
-            --dark: #36393F;
-            --darker: #2F3136;
-            --light: #DCDEE3;
+            --bg: #0b0e14;
+            --card: #12161f;
+            --border: #1e2430;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #00ffaa;
+            --accent-dim: #00cc88;
+            --purple: #7c5cff;
         }
-      
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-      
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #2F3136 0%, #202225 100%);
-            color: #DCDEE3;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-      
-        .navbar {
-            background: rgba(32, 34, 37, 0.95);
-            backdrop-filter: blur(10px);
+
+        .bg-glow {
             position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #202225;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(0, 255, 170, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
-      
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.8rem;
             font-weight: 700;
-            color: white;
-        }
-      
-        .logo-dot {
-            color: var(--primary);
-        }
-      
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-      
-        .nav-links a {
-            color: #DCDEE3;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--text);
         }
-      
-        .nav-links a:hover {
-            color: var(--primary);
+
+        .logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #fff;
+            padding: 4px;
         }
-      
+
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 5% 80px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 80px 0 60px;
         }
-      
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
-            z-index: 0;
-        }
-      
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            z-index: 1;
-        }
-      
-        .hero-badge {
-            display: inline-block;
-            background: rgba(88, 101, 242, 0.2);
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-      
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-      
-        .hero .highlight {
-            color: var(--primary);
-        }
-      
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-        }
-      
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-      
-        .btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
+
+        .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s;
+            background: rgba(0, 255, 170, 0.1);
+            border: 1px solid rgba(0, 255, 170, 0.25);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            letter-spacing: 0.02em;
         }
-      
-        .btn-primary {
-            background: var(--primary);
-            color: white;
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--accent), #7c5cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
             border: none;
         }
-      
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+            color: #04140f;
+            box-shadow: 0 4px 24px rgba(0, 255, 170, 0.25);
+        }
+
         .btn-primary:hover {
-            background: #4752C4;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 255, 170, 0.35);
         }
-      
-        .btn-secondary {
-            background: transparent;
-            color: #DCDEE3;
-            border: 2px solid #5865F2;
-        }
-      
-        .btn-secondary:hover {
-            background: rgba(88, 101, 242, 0.1);
-        }
-      
-        section {
-            padding: 100px 5%;
-        }
-      
+
         .features {
-            background: #292B2F;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 40px 0 80px;
         }
-      
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover { border-color: #2a3344; }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 255, 170, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 36px;
+            letter-spacing: -0.02em;
         }
-      
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-      
-        .feature-card {
-            background: #36393F;
-            padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s;
-        }
-      
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-      
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-      
-        .commands {
-            background: #2F3136;
-        }
-      
-        .command-list {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #36393F;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-      
-        .command-item {
-            padding: 1.2rem 2rem;
-            border-bottom: 1px solid #42444A;
+
+        .steps {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 560px;
+            margin: 0 auto 80px;
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 22px;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 255, 170, 0.15);
+            color: var(--accent);
+            border-radius: 8px;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
         }
-      
-        .command-item:last-child {
-            border-bottom: none;
-        }
-      
-        .command-name {
-            font-family: monospace;
-            color: #00FF9F;
+
+        .step h4 {
+            font-size: 0.95rem;
             font-weight: 600;
+            margin-bottom: 4px;
         }
-      
+
+        .step p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
         footer {
-            background: #202225;
-            padding: 60px 5% 30px;
             text-align: center;
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-      
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
+
+        .footer-brand {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-brand img {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <span>Mouristic</span><span class="logo-dot">.</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#commands">Commands</a></li>
-        </ul>
-        <a href="#" class="btn btn-primary" onclick="inviteBot()">Invite Bot</a>
-    </nav>
+    <div class="bg-glow"></div>
+    <div class="bg-grid"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">✨ Discord Giveaway Bot</div>
-            <h1>Host <span class="highlight">epic giveaways</span><br>with ease</h1>
-            <p>The clean, fast, and reliable giveaway bot for your Discord server</p>
-          
-            <div class="cta-buttons">
-                <a href="#" class="btn btn-primary" onclick="inviteBot()">
-                    <span>Invite Mouristic Now</span>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Logo">
+                Welcome Bot
+            </a>
+        </header>
+
+        <section class="hero">
+            <div class="badge">Online • Multi-Server</div>
+            <h1>Beautiful welcome<br>messages for <span>every server</span></h1>
+            <p class="hero-desc">
+                Automatically greet new members with a clean, modern embed.  
+                Simple setup. Owner & admin only control.
+            </p>
+            <div class="cta-row">
+                <a href="https://discord.com/oauth2/authorize?client_id=1527981571074953227&permissions=8&integration_type=0&scope=bot" 
+                   class="btn btn-primary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    Add to Discord
                 </a>
-                <a href="#features" class="btn btn-secondary">See Features</a>
             </div>
-          
-            <p style="margin-top: 3rem; font-size: 1rem; opacity: 0.7;">
-                Trusted by 1,200+ servers • Zero downtime • Free forever
-            </p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features -->
-    <section class="features" id="features">
-        <h2 class="section-title">Powerful Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🎁</div>
-                <h3>Easy Giveaways</h3>
-                <p>Create giveaways in seconds with simple commands. Supports multiple winners and custom durations.</p>
+        <section class="features">
+            <div class="card">
+                <div class="card-icon">👋</div>
+                <h3>Auto Welcome</h3>
+                <p>Sends a clean, styled embed the moment someone joins your server.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⏱️</div>
-                <h3>Auto End &amp; Reroll</h3>
-                <p>Giveaways automatically end and pick winners. Didn't claim? Just use <code>/reroll</code>.</p>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Owner & Admin Only</h3>
+                <p>Only the server owner or administrators can set the welcome channel.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">💵</div>
-                <h3>Free</h3>
-                <p>There is no fee, taxes, subscription and ads in the bot at all!</p>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Multi-Server</h3>
+                <p>Works on as many servers as you want. Each server has its own settings.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Lightning Fast</h3>
-                <p>Built with modern Discord API for instant responses and reliable performance.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Commands -->
-    <section class="commands" id="commands">
-        <h2 class="section-title">Main Commands</h2>
-        <div class="command-list">
-            <div class="command-item">
-                <span><strong>/giveaway</strong></span>
-                <span style="color: #72767D;">Start a new giveaway</span>
+        <h2 class="section-title">How to set up</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                    <h4>Invite the bot</h4>
+                    <p>Click the button above and add the bot to your server with Administrator permission.</p>
+                </div>
             </div>
-            <div class="command-item">
-                <span><strong>/endgiveaway</strong></span>
-                <span style="color: #72767D;">End a giveaway early</span>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                    <h4>Set the channel</h4>
+                    <p>Run <code>/welcome #your-channel</code> (only owner or admins can use it).</p>
+                </div>
             </div>
-            <div class="command-item">
-                <span><strong>/reroll</strong></span>
-                <span style="color: #72767D;">Pick new winners</span>
-            </div>
-            <div class="command-item">
-                <span><strong>/roleaccess</strong></span>
-                <span style="color: #72767D;">Setup who can access the bot with roles!</span>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                    <h4>Done</h4>
+                    <p>New members will now receive a beautiful welcome message automatically.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
-                Mouristic<span class="logo-dot">.</span>
+        <footer>
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="Logo">
+                Powered by mouristic
             </div>
-           
-            <div style="margin: 20px 0;">
-                <a href="tos.html" style="color:#B9BBBE; margin:0 15px; text-decoration:none;">Terms of Service</a>
-                <a href="privacy.html" style="color:#B9BBBE; margin:0 15px; text-decoration:none;">Privacy Policy</a>
+            <p>Simple. Clean. Free.</p>
+            <div class="footer-links">
+                <a href="tos.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
-           
-            <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.6;">
-                © 2026 Mouristic • Not affiliated with Discord Inc.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Your bot invite link
-        const inviteLink = "https://discord.com/oauth2/authorize?client_id=1527981571074953227&permissions=8&integration_type=0&scope=bot";
-
-        function inviteBot() {
-            window.open(inviteLink, "_blank");
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-    </script>
+        </footer>
+    </div>
 </body>
 </html>
