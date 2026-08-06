@@ -16,7 +16,6 @@
             line-height: 1.45;
         }
 
-        /* Classic top banner */
         .topbanner {
             background: linear-gradient(to bottom, #4a7ab0, #2c5a8c);
             border-bottom: 3px solid #1a3a5c;
@@ -41,7 +40,6 @@
             border-radius: 4px;
         }
 
-        /* Main container - classic centered box */
         .container {
             max-width: 920px;
             margin: 15px auto;
@@ -50,7 +48,6 @@
             box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
         }
 
-        /* Navigation bar - old school */
         .navbar {
             background: #d0dce8;
             border-bottom: 2px solid #7a9cc0;
@@ -70,7 +67,6 @@
             text-decoration: underline;
         }
 
-        /* Content area */
         .content {
             padding: 18px 22px 25px 22px;
         }
@@ -90,7 +86,6 @@
             text-align: justify;
         }
 
-        /* Classic box style for sections */
         .section {
             margin-bottom: 22px;
             border: 1px solid #a0b8d0;
@@ -102,7 +97,6 @@
             padding: 12px 15px;
         }
 
-        /* Footer */
         .footer {
             background: #4a7ab0;
             color: #fff;
@@ -116,11 +110,43 @@
             color: #ffd;
         }
 
-        /* Small decorative line */
-        .hr {
-            border: none;
-            border-top: 1px solid #a0b8d0;
-            margin: 12px 0;
+        ul {
+            margin: 8px 0 14px 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .download-box {
+            text-align: center;
+            padding: 18px;
+            background: #eaf0f7;
+            border: 1px dashed #7a9cc0;
+            margin: 10px 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #4a7ab0;
+            color: #fff;
+            padding: 10px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #2c5a8c;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .download-btn:hover {
+            background: #2c5a8c;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #555;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -134,8 +160,10 @@
 <div class="container">
     <div class="navbar">
         <a href="#about">About</a>
+        <a href="#features">Features</a>
         <a href="#why">Why choose us?</a>
         <a href="#download">Download</a>
+        <a href="mailto:mourimcbusiness@gmail.com">Contact</a>
     </div>
 
     <div class="content">
@@ -143,40 +171,44 @@
         <div class="section" id="about">
             <h2>About us</h2>
             <div class="section-inner">
-                <p>Mouristic is a Linux distribution designed for users who want the best features from multiple operating systems combined into one convenient package. Instead of spending hours installing software, configuring settings, and searching for essential tools after a fresh installation, Mouristic aims to provide a complete, ready-to-use experience from the very first boot.</p>
+                <p>Mouristic is a Linux distro that is based on Linux Mint. We are trying to rebrand it and make it simpler.</p>
+                <p>Thanks to Linux Mint for being a based distro.</p>
+            </div>
+        </div>
 
-                <p>The goal of Mouristic is to make Linux more accessible, especially for beginners and users who simply want everything to work out of the box. Many Linux distributions require users to manually install common applications, virtualization software, media codecs, development tools, and other utilities. Mouristic removes much of that extra work by including many of these features and applications by default.</p>
-
-                <p>For example, Mouristic comes with built-in virtualization tools, allowing users to create and run virtual machines without needing to install additional software. It also includes a selection of popular web browsers, giving users the freedom to choose their preferred browser immediately after installation. Alongside these, Mouristic includes a variety of useful utilities, productivity applications, multimedia software, and developer tools that many people install on nearly every computer.</p>
-
-                <p>Mouristic is based on Linux Mint, which itself is built upon Ubuntu and Debian. This provides a stable, secure, and well-supported foundation while maintaining compatibility with the vast Debian and Ubuntu software repositories. Users can easily install thousands of additional applications through the package manager while benefiting from the reliability and long-term support of the underlying operating system.</p>
-
-                <p>The philosophy behind Mouristic is simple: install once and start using your computer immediately. Whether you're a student, developer, content creator, gamer, or everyday computer user, Mouristic is designed to reduce setup time and let you focus on your work instead of configuring your operating system.</p>
-
-                <p>As Mouristic continues to evolve, more built-in features, customization options, and quality-of-life improvements will be added based on community feedback. The vision is to create a Linux distribution that combines convenience, performance, stability, and flexibility into a single operating system, making it easier than ever for users to switch to Linux without sacrificing the tools they rely on every day.</p>
+        <div class="section" id="features">
+            <h2>Features</h2>
+            <div class="section-inner">
+                <ul>
+                    <li>Multiple popular web browsers ready to use</li>
+                    <li>Virtualization tools included (run other systems easily)</li>
+                    <li>Multimedia apps + codecs already working</li>
+                    <li>Office &amp; productivity tools pre-installed</li>
+                    <li>Developer tools &amp; coding stuff ready</li>
+                    <li>Common everyday utilities included</li>
+                    <li>Extra quality-of-life tools</li>
+                    <li>Works right after install — minimal setup needed</li>
+                </ul>
             </div>
         </div>
 
         <div class="section" id="why">
             <h2>Why choose us?</h2>
             <div class="section-inner">
-                <p>Choosing an operating system shouldn't mean spending hours installing software and configuring your computer before you can actually use it. Mouristic is built to eliminate that hassle by providing a complete, feature-rich experience right out of the box.</p>
-
-                <p>Unlike many Linux distributions that require users to manually install essential applications, Mouristic includes many commonly used tools from the start. Popular web browsers, virtualization software, multimedia tools, and other useful applications are already available, allowing you to get started immediately after installation.</p>
-
-                <p>Built on Linux Mint, and ultimately based on Ubuntu and Debian, Mouristic offers the stability, security, and extensive software compatibility of one of the world's most trusted Linux ecosystems. You get access to thousands of applications while benefiting from a reliable and well-tested foundation.</p>
-
-                <p>Mouristic is designed for everyone—from beginners trying Linux for the first time to experienced users who want to save time setting up a new system. Whether you're working, studying, programming, gaming, or simply browsing the web, Mouristic provides the tools you need without requiring extensive configuration.</p>
+                <p>We want things simple.</p>
+                <p>No advanced commands, no complicated apps, and no extra stuff you don't need.</p>
+                <p>Just a straightforward system that works.</p>
             </div>
         </div>
 
         <div class="section" id="download">
             <h2>Download</h2>
             <div class="section-inner">
-                <p style="text-align:center; font-size:14px; color:#555;">
-                    <strong>Work in progress...</strong><br>
-                    ISO images will be available here soon.
-                </p>
+                <div class="download-box">
+                    <strong>Work in progress ISO</strong><br><br>
+                    <a href="mouristic.iso" class="download-btn" download>Download mouristic.iso</a>
+                    <div class="note">File: mouristic.iso</div>
+                </div>
             </div>
         </div>
 
